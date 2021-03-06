@@ -1,0 +1,1 @@
+insert into inscripcion (usuario,curso,valor,fecha_inscripcion) values (:usuario,:curso, :valor,:fechaInscripcion)

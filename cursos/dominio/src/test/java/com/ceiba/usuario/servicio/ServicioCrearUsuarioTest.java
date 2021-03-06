@@ -3,7 +3,6 @@ package com.ceiba.usuario.servicio;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
-import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.usuario.servicio.testdatabuilder.UsuarioTestDataBuilder;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -12,14 +11,7 @@ import com.ceiba.BasePrueba;
 
 public class ServicioCrearUsuarioTest {
 
-    @Test
-    public void validarClaveLongitudMenor4Test() {
-        // arrange
-        UsuarioTestDataBuilder usuarioTestDataBuilder = new UsuarioTestDataBuilder().conClave("124");
-        // act - assert
-        BasePrueba.assertThrows(() -> usuarioTestDataBuilder.build(), ExcepcionLongitudValor.class, "La clave debe tener una longitud mayor o igual a 4");
-    }
-
+    
     @Test
     public void validarUsuarioExistenciaPreviaTest() {
         // arrange

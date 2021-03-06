@@ -1,5 +1,9 @@
 package com.ceiba.configuracion;
 
+import com.ceiba.inscripcion.puerto.repositorio.RepositorioInscripcion;
+import com.ceiba.inscripcion.servicio.ServicioCrearInscripcion;
+import com.ceiba.inscripcion.servicio.ServicioEliminarInscripcion;
+import com.ceiba.inscripcion.servicio.ServicioActualizarInscripcion;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
 import com.ceiba.usuario.servicio.ServicioCrearUsuario;
@@ -24,6 +28,18 @@ public class BeanServicio {
     public ServicioActualizarUsuario servicioActualizarUsuario(RepositorioUsuario repositorioUsuario) {
         return new ServicioActualizarUsuario(repositorioUsuario);
     }
-	
+    
+    @Bean
+    public ServicioCrearInscripcion servicioCrearInscripcion(RepositorioInscripcion repositorioInscripcion) {
+        return new ServicioCrearInscripcion(repositorioInscripcion);
+    }
+    @Bean
+    public ServicioEliminarInscripcion servicioEliminarInscripcion(RepositorioInscripcion repositorioInscripcion) {
+        return new ServicioEliminarInscripcion(repositorioInscripcion);
+    }
+    @Bean
+    public ServicioActualizarInscripcion servicioActualizarInscripcion(RepositorioInscripcion repositorioInscripcion) {
+        return new ServicioActualizarInscripcion(repositorioInscripcion);
+    }
 
 }
