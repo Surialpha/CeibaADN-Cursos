@@ -3,13 +3,17 @@ package com.ceiba.usuario.servicio.testdatabuilder;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class UsuarioTestDataBuilder {
 
     private Long id;
     private Long cedula;
+    private Long cedido;
     private String nombreUsuario;
     private LocalDate fecha_nacimiento;
+    private LocalDateTime fecha_creacion;
+    private float creditos;
 
     public UsuarioTestDataBuilder() {
         nombreUsuario = "1234";
@@ -23,6 +27,6 @@ public class UsuarioTestDataBuilder {
     }
 
     public Usuario build() {
-        return new Usuario(id,cedula,nombreUsuario,fecha_nacimiento);
+        return new Usuario(id,cedula,nombreUsuario,fecha_nacimiento,fecha_creacion,creditos,cedido);
     }
 }

@@ -3,6 +3,7 @@ package com.ceiba.usuario.controlador;
 import com.ceiba.ComandoRespuesta;
 import com.ceiba.usuario.comando.ComandoUsuario;
 import com.ceiba.usuario.comando.manejador.ManejadorActualizarUsuario;
+import com.ceiba.usuario.comando.manejador.ManejadorCederCreditos;
 import com.ceiba.usuario.comando.manejador.ManejadorCrearUsuario;
 import com.ceiba.usuario.comando.manejador.ManejadorEliminarUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,17 @@ public class ComandoControladorUsuario {
     private final ManejadorCrearUsuario manejadorCrearUsuario;
 	private final ManejadorEliminarUsuario manejadorEliminarUsuario;
 	private final ManejadorActualizarUsuario manejadorActualizarUsuario;
+	private final ManejadorCederCreditos manejadorCederCreditos;
 
     @Autowired
     public ComandoControladorUsuario(ManejadorCrearUsuario manejadorCrearUsuario,
 									 ManejadorEliminarUsuario manejadorEliminarUsuario,
-									 ManejadorActualizarUsuario manejadorActualizarUsuario) {
+									 ManejadorActualizarUsuario manejadorActualizarUsuario,
+									 ManejadorCederCreditos manejadorCederCreditos) {
         this.manejadorCrearUsuario = manejadorCrearUsuario;
 		this.manejadorEliminarUsuario = manejadorEliminarUsuario;
 		this.manejadorActualizarUsuario = manejadorActualizarUsuario;
+		this.manejadorCederCreditos = manejadorCederCreditos;
     }
 
     @PostMapping
@@ -46,5 +50,12 @@ public class ComandoControladorUsuario {
 	public void actualizar(@RequestBody ComandoUsuario comandoUsuario,@PathVariable Long id) {
 		comandoUsuario.setId(id);
 		manejadorActualizarUsuario.ejecutar(comandoUsuario);
+	}
+	
+	@PutMapping(value="/ceder/{id}")
+	@ApiOperation("Actualizar Usuario")
+	public void cederCreditos(@RequestBody ComandoUsuario comandoUsuario,@PathVariable Long id) {
+		comandoUsuario.setId(id);
+		manejadorCederCreditos.ejecutar(comandoUsuario);
 	}
 }

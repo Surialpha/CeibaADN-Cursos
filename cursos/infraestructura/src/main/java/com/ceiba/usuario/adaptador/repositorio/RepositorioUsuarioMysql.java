@@ -30,8 +30,14 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
     @SqlStatement(namespace="usuario", value="existeExcluyendoId") 
     private static String sqlExisteExcluyendoId;
     
+    @SqlStatement(namespace="usuario", value="actualizarCreditos") 
+    private static String actualizarCreditos;
+    
     @SqlStatement(namespace="usuario", value="ingresoDia") 
     private static String sqlingresoDia;
+    
+    @SqlStatement(namespace="usuario", value="retornarCreditos") 
+    private static String retornarCreditos;
 
     public RepositorioUsuarioMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -77,5 +83,23 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
 		 MapSqlParameterSource paramSource = new MapSqlParameterSource();
 	     paramSource.addValue("fecha_creacion", fecha);
 	     return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlingresoDia,paramSource,Long.class);
+	}
+
+	@Override
+	public void cederCreditos(Usuario usuario) {
+		 this.customNamedParameterJdbcTemplate.actualizar(usuario, actualizarCreditos);
+	}
+
+	@Override
+	public float retornarCreditos(Long id) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(retornarCreditos, paramSource ,Float.class);
+	}
+
+	@Override
+	public void sumarCreditos(Long id, float creditos) {
+		Usuario usuario = new Usuario(id,creditos);
+        this.customNamedParameterJdbcTemplate.actualizar(usuario, actualizarCreditos);
 	}
 }

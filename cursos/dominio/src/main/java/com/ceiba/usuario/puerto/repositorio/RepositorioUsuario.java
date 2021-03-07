@@ -17,6 +17,18 @@ public interface RepositorioUsuario {
      * @param usuario
      */
     void actualizar(Usuario usuario);
+    
+    /**
+     * Permite actualizar un usuario que cede creditos
+     * @param usuario
+     */
+    void cederCreditos(Usuario usuario);
+    
+    /**
+     * Permite actualizar un usuario que le cedieron creditos
+     * @param usuario
+     */
+    void sumarCreditos(Long id, float creditos);
 
     /**
      * Permite eliminar un usuario
@@ -32,8 +44,13 @@ public interface RepositorioUsuario {
     boolean existe(Long cedula);
     
     Long existeDia(LocalDateTime fecha);
-
-
+    
+    /**
+     * Permite retornar el numero de cretidos que tiene un usuario
+     * @param nombre
+     * @return creditos
+     */
+    float retornarCreditos(Long id);
     /**
      * Permite validar si existe un usuario con un nombre excluyendo un id
      * @param nombre

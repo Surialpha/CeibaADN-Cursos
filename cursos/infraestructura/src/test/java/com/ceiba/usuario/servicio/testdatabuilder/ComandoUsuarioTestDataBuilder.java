@@ -13,6 +13,8 @@ public class ComandoUsuarioTestDataBuilder {
     private String nombre;
     private LocalDateTime fecha;
     private LocalDate fecha_nacimiento;
+    private Long cedido;
+    private float creditos;
 
     public ComandoUsuarioTestDataBuilder() {
         nombre = UUID.randomUUID().toString();
@@ -25,6 +27,6 @@ public class ComandoUsuarioTestDataBuilder {
     }
 
     public ComandoUsuario build() {
-        return new ComandoUsuario(id,cedula,nombre,fecha,fecha_nacimiento);
+        return new ComandoUsuario(id,cedula,nombre,fecha,fecha_nacimiento,creditos,cedido);
     }
 }

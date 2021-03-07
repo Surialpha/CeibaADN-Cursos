@@ -19,4 +19,7 @@ public class ComandoUsuario{
     private String nombre;
     private LocalDateTime fecha;
     private LocalDate fechaNacimiento;
+    private float creditos;
+    private Long cedido;
+    
 }

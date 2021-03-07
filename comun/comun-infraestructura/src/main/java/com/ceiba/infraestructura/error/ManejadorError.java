@@ -19,6 +19,7 @@ import com.ceiba.dominio.excepcion.ExcepcionMayoriaEdad;
 import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
+import com.ceiba.dominio.excepcion.ExcepcionCreditos;
 
 @ControllerAdvice
 public class ManejadorError extends ResponseEntityExceptionHandler {
@@ -38,6 +39,7 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
         CODIGOS_ESTADO.put(ExcepcionMaximoIngresos.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionTecnica.class.getSimpleName(), HttpStatus.INTERNAL_SERVER_ERROR.value());
         CODIGOS_ESTADO.put(ExcepcionMayoriaEdad.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(ExcepcionCreditos.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         
         
         //en caso de tener otra excepcion matricularla aca

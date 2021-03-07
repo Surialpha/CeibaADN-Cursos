@@ -13,7 +13,10 @@ public class FabricaUsuario {
                 comandoUsuario.getId(),
                 comandoUsuario.getCedula(),
                 comandoUsuario.getNombre(),
-                comandoUsuario.getFechaNacimiento()
+                comandoUsuario.getFechaNacimiento(), 
+                comandoUsuario.getFecha(), 
+                comandoUsuario.getCreditos(),
+                comandoUsuario.getCedido()
         );
     }
 

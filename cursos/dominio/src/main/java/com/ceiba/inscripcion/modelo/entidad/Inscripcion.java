@@ -5,8 +5,10 @@ import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 import java.time.LocalDate;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Inscripcion {
 
 	private static final String SE_DEBE_INGRESAR_EL_USUARIO = "Se debe ingresar el usuario";

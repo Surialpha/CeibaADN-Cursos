@@ -21,6 +21,9 @@ public class RepositorioInscripcionMysql implements RepositorioInscripcion {
 
     @SqlStatement(namespace="inscripcion", value="eliminar")
     private static String sqlEliminar;
+    
+    @SqlStatement(namespace="inscripcion", value="numeroInscritos")
+    private static String sqlNumeroInscritos;
 
 
     public RepositorioInscripcionMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
@@ -45,6 +48,14 @@ public class RepositorioInscripcionMysql implements RepositorioInscripcion {
     public void actualizar(Inscripcion inscripcion) {
         this.customNamedParameterJdbcTemplate.actualizar(inscripcion, sqlActualizar);
     }
+
+	@Override
+	public int numeroInscritos(Long curso) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+		paramSource.addValue("curso", curso);
+		
+		return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlNumeroInscritos,paramSource, Integer.class);
+	}
 
    
 

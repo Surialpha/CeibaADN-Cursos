@@ -23,5 +23,11 @@ public interface RepositorioInscripcion {
      * @param id
      */
     void eliminar(Long id);
+    
+    /**
+     * Permite buscar el numero de inscritos diarios en un curso
+     * @param id
+     */
+    int numeroInscritos(Long curso);
 
 }

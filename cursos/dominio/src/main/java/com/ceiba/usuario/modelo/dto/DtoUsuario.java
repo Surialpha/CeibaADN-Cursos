@@ -11,6 +11,7 @@ public class DtoUsuario {
     private Long id;
     private Long cedula;
     private String nombre;
+    private float creditos;
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaNacimiento;
     

@@ -18,14 +18,27 @@ public class ServicioCrearInscripcion {
     }
 
     public Long ejecutar(Inscripcion inscripcion) {
-    	//validar(inscripcion);
+    	inscripcion.setValor(aplicarDescuento(numeroInscritos(inscripcion.getCurso()),inscripcion.getValor()));
         return this.repositorioInscripcion.crear(inscripcion);
     }
     
 
-    private void validar(Inscripcion inscripcion) {
-        if(true) {
-            throw new ExcepcionDuplicidad(VALIDAR);
+    private int numeroInscritos(Long curso) {
+    	int numeroInscritos = this.repositorioInscripcion.numeroInscritos(curso);
+    	System.out.print(numeroInscritos);
+        if(numeroInscritos>=4) {
+        	return numeroInscritos-4;
+        }
+        else {
+        	return 0;
         }
     }
+    
+    
+    private float aplicarDescuento(int consDes , float valor) {
+    	
+    	return (float) ((float) valor+(valor*(0.01*consDes)));
+      
+    }
+    
 }
