@@ -24,7 +24,7 @@ public class ServicioCrearInscripcion {
     }
 
     public Long ejecutar(Inscripcion inscripcion) {
-    	//validarDiaSemana(inscripcion);
+    	validarDiaSemana(inscripcion);
     	restarCreditos(inscripcion);
     	inscripcion.setValor(aplicarDescuento(numeroInscritos(inscripcion.getCurso()),inscripcion.getValor()));
         return this.repositorioInscripcion.crear(inscripcion);

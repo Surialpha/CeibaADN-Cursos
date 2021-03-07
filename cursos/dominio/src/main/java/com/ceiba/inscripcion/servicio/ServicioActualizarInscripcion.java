@@ -23,7 +23,7 @@ public class ServicioActualizarInscripcion {
     }
 
     public void ejecutar(Inscripcion inscripcion) {
-    	//validarDiaSemana(inscripcion);
+    	validarDiaSemana(inscripcion);
         this.repositorioInscripcion.actualizar(inscripcion);
     }
 
