@@ -21,13 +21,28 @@ pipeline {
     stage('Checkout') {
       steps{
         echo "------------>Checkout<------------"
+        
+      checkout([
+              $class: 'GitSCM', 
+              branches: [[name: '*/main']], 
+              doGenerateSubmoduleConfigurations: false, 
+              extensions: [], 
+              gitTool: 'Default', 
+              submoduleCfg: [], 
+              userRemoteConfigs: [[
+                  credentialsId: 'GitHub_surialpha', 
+                      url:'https://github.com/Surialpha/CeibaADN-Cursos'
+                  ]]
+              ])
+
+
       }
     }
     
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-
+          sh 'gradle --b ./build.gradle test'
       }
     }
 
@@ -35,7 +50,7 @@ pipeline {
       steps{
         echo '------------>Análisis de código estático<------------'
         withSonarQubeEnv('Sonar') {
-sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+          sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
         }
       }
     }
@@ -43,6 +58,8 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
     stage('Build') {
       steps {
         echo "------------>Build<------------"
+        //Construir sin tarea test que se ejecutó previamente
+        sh 'gradle --b ./build.gradle build -x test'
       }
     }  
   }
@@ -52,9 +69,11 @@ sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallat
     }
     success {
       echo 'This will run only if successful'
+      junit 'build/test-results/test/*.xml'
     }
     failure {
       echo 'This will run only if failed'
+      mail (to: 'sebastian.gomez@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
     }
     unstable {
       echo 'This will run only if the run was marked as unstable'
