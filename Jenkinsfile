@@ -42,7 +42,7 @@ pipeline {
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-         // sh 'gradle --b ./cursos/build.gradle test'
+          sh 'gradle --b ./cursos/build.gradle test'
       }
     }
 
@@ -59,7 +59,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
         //Construir sin tarea test que se ejecutó previamente
-       // sh 'gradle --b ./cursos/build.gradle build -x test'
+        sh 'gradle --b ./cursos/build.gradle build -x test'
       }
     }  
   }
