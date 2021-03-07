@@ -5,6 +5,7 @@ import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -52,7 +53,6 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
     public void eliminar(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-
         this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
     }
 
@@ -79,7 +79,7 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
     }
 
 	@Override
-	public Long existeDia(LocalDateTime fecha) {
+	public Long existeDia(LocalDate fecha) {
 		 MapSqlParameterSource paramSource = new MapSqlParameterSource();
 	     paramSource.addValue("fecha_creacion", fecha);
 	     return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlingresoDia,paramSource,Long.class);

@@ -21,4 +21,5 @@ public class ServicioActualizarUsuarioTest {
         // act - assert
         BasePrueba.assertThrows(() -> servicioActualizarUsuario.ejecutar(usuario), ExcepcionDuplicidad.class,"El usuario ya existe en el sistema");
     }
+
 }

@@ -4,6 +4,7 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.inscripcion.modelo.entidad.Inscripcion;
 import com.ceiba.inscripcion.puerto.repositorio.RepositorioInscripcion;
+import com.ceiba.usuario.modelo.entidad.Usuario;
 
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
@@ -24,6 +25,12 @@ public class RepositorioInscripcionMysql implements RepositorioInscripcion {
     
     @SqlStatement(namespace="inscripcion", value="numeroInscritos")
     private static String sqlNumeroInscritos;
+    
+    @SqlStatement(namespace="inscripcion", value="actualizarCreditos") 
+    private static String actualizarCreditos;
+    
+    @SqlStatement(namespace="inscripcion", value="retornarCreditos") 
+    private static String retornarCreditos;
 
 
     public RepositorioInscripcionMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
@@ -39,7 +46,6 @@ public class RepositorioInscripcionMysql implements RepositorioInscripcion {
     public void eliminar(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-
         this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlEliminar, paramSource);
     }
 
@@ -57,6 +63,16 @@ public class RepositorioInscripcionMysql implements RepositorioInscripcion {
 		return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlNumeroInscritos,paramSource, Integer.class);
 	}
 
-   
+	@Override
+	public void cederCreditos(Usuario usuario) {
+		 this.customNamedParameterJdbcTemplate.actualizar(usuario, actualizarCreditos);
+	}
+
+	@Override
+	public float retornarCreditos(Long id) {
+		MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", id);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(retornarCreditos, paramSource ,Float.class);
+	}
 
 }

@@ -17,7 +17,7 @@ public class ComandoUsuario{
     private Long id;
     private Long cedula;
     private String nombre;
-    private LocalDateTime fecha;
+    private LocalDate fecha;
     private LocalDate fechaNacimiento;
     private float creditos;
     private Long cedido;

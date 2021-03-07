@@ -12,17 +12,50 @@ public class UsuarioTestDataBuilder {
     private Long cedido;
     private String nombreUsuario;
     private LocalDate fecha_nacimiento;
-    private LocalDateTime fecha_creacion;
+    private LocalDate fecha_creacion;
     private float creditos;
 
     public UsuarioTestDataBuilder() {
-        nombreUsuario = "1234";
-        cedula = (long) 11214;
+        nombreUsuario = "Sebastian";
+        cedula = (long) 1214736979;
+        fecha_nacimiento = LocalDate.now();
+        fecha_creacion = LocalDate.now();
+        creditos = (float) 200.0;
     }
 
 
     public UsuarioTestDataBuilder conId(Long id) {
         this.id = id;
+        return this;
+    }
+    
+    public UsuarioTestDataBuilder conCedula(Long cedula) {
+        this.cedula = cedula;
+        return this;
+    }
+    
+    public UsuarioTestDataBuilder conNombre(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+        return this;
+    }
+    
+    public UsuarioTestDataBuilder conFecha_nacimiento(LocalDate fecha_nacimiento) {
+    	this.fecha_nacimiento = fecha_nacimiento;
+    	return this;
+    }
+    
+    public UsuarioTestDataBuilder conFecha_creacion(LocalDate fecha_creacion) {
+    	this.fecha_creacion = fecha_creacion;
+    	return this;
+    }
+    
+    public UsuarioTestDataBuilder conCreditos(float creditos) {
+    	this.creditos = creditos;
+    	return this;
+    }
+
+    public UsuarioTestDataBuilder conCedido(Long cedido) {
+        this.cedido = cedido;
         return this;
     }
 

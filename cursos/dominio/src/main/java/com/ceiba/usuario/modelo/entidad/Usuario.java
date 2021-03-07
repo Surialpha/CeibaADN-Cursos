@@ -20,13 +20,13 @@ public class Usuario {
 
     private Long id;
     private String nombre;
-    private LocalDateTime fechaCreacion;
+    private LocalDate fechaCreacion;
     private LocalDate fechaNacimiento;
     private Long cedula;
     private float creditos;
     private Long cedido;
 
-    public Usuario(Long id,Long cedula,String nombre,LocalDate fechaNacimiento,LocalDateTime fechaCreacion,float creditos,Long cedido) {
+    public Usuario(Long id,Long cedula,String nombre,LocalDate fechaNacimiento,LocalDate fechaCreacion,float creditos,Long cedido) {
         validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE_DE_USUARIO);
         validarObligatorio(cedula, SE_DEBE_INGRESAR_LA_CEDULA);
         validarObligatorio(fechaNacimiento, SE_DEBE_INGRESAR_LA_FECHA_DE_NACIMIENTO);

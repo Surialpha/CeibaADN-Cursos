@@ -2,6 +2,7 @@ package com.ceiba.inscripcion.puerto.repositorio;
 
 
 import com.ceiba.inscripcion.modelo.entidad.Inscripcion;
+import com.ceiba.usuario.modelo.entidad.Usuario;
 
 
 public interface RepositorioInscripcion {
@@ -29,5 +30,9 @@ public interface RepositorioInscripcion {
      * @param id
      */
     int numeroInscritos(Long curso);
+    
+    void cederCreditos(Usuario usuario);
+    
+    float retornarCreditos(Long id);
 
 }

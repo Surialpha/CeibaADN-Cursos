@@ -28,7 +28,7 @@ public class ServicioCrearUsuario {
         validarExistenciaPrevia(usuario);
         validarIngresosDiarios(usuario);
         validarMayoriaEdad(usuario);
-        usuario.setFechaCreacion(LocalDateTime.now());
+        usuario.setFechaCreacion(LocalDate.now());
         usuario.setCreditos(200);
         return this.repositorioUsuario.crear(usuario);
     }

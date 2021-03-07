@@ -16,4 +16,5 @@ create table inscripcion (
  fecha_inscripcion date not null,
  primary key (id),
  FOREIGN KEY (usuario) REFERENCES usuario(id)	
+ ON DELETE CASCADE
 );  

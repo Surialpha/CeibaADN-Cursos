@@ -1,5 +1,6 @@
 package com.ceiba.usuario.puerto.repositorio;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.ceiba.usuario.modelo.entidad.Usuario;
@@ -43,7 +44,7 @@ public interface RepositorioUsuario {
      */
     boolean existe(Long cedula);
     
-    Long existeDia(LocalDateTime fecha);
+    Long existeDia(LocalDate fecha);
     
     /**
      * Permite retornar el numero de cretidos que tiene un usuario

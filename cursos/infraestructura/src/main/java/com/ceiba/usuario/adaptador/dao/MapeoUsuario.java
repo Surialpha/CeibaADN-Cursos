@@ -2,6 +2,7 @@ package com.ceiba.usuario.adaptador.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.ceiba.infraestructura.jdbc.MapperResult;
@@ -16,8 +17,8 @@ public class MapeoUsuario implements RowMapper<DtoUsuario>, MapperResult {
         Long id = resultSet.getLong("id");
         Long cedula = resultSet.getLong("cedula");
         String nombre = resultSet.getString("nombre");
-        LocalDateTime fecha = extraerLocalDateTime(resultSet, "fecha_creacion");
-        LocalDateTime fecha_nacimiento = extraerLocalDateTime(resultSet, "fecha_nacimiento");
+        LocalDate fecha = extraerLocalDate(resultSet, "fecha_creacion");
+        LocalDate fecha_nacimiento = extraerLocalDate(resultSet, "fecha_nacimiento");
         float creditos = resultSet.getFloat("creditos");
         
 

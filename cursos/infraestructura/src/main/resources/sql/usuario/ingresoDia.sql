@@ -1,1 +1,1 @@
-select count(1) from usuario where date(fecha_creacion) = date(:fecha_creacion)
+select count(1) from usuario where fecha_creacion = :fecha_creacion

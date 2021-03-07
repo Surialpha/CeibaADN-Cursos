@@ -6,7 +6,7 @@ import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
 public class ServicioCederCreditos {
 
-    private static final String EL_USUARIO_NO_TIENE_LA_CANTIDAD_DISPONIBLE_PARA_CEDER = "El usuario no puede ceder m·s creditos de los que tiene";
+    private static final String EL_USUARIO_NO_TIENE_LA_CANTIDAD_DISPONIBLE_PARA_CEDER = "El usuario no puede ceder m√°s creditos de los que tiene";
     private static final String EL_USUARIO_NO_PUEDE_RECIBIR_MAS_RECIBIR_CREDITOS = "El usuario no puede recibir esa cantidad de creditos ya que supera 400 creditos totales";
 
     private final RepositorioUsuario repositorioUsuario;
@@ -39,11 +39,13 @@ public class ServicioCederCreditos {
     	float creditosD = repositorioUsuario.retornarCreditos(usuario.getId());
     	return creditosD;
     }
+    
     public float retornarCreditosCedido(Usuario usuario) {
     	float creditosD = repositorioUsuario.retornarCreditos(usuario.getCedido());
     	float suma = creditosD+usuario.getCreditos();
     	return suma;
     }
+    
     private void validarCreditosDisponibles(Usuario usuario) {
     	float disponible = retornarCreditosUsuario(usuario);
         if(disponible<usuario.getCreditos()) {
