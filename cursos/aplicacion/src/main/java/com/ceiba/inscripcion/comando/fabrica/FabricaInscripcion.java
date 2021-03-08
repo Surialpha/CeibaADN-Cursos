@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import com.ceiba.inscripcion.comando.ComandoInscripcion;
 import com.ceiba.inscripcion.modelo.entidad.Inscripcion;
 
+import java.time.LocalDate;
+
 @Component
 public class FabricaInscripcion {
 
@@ -14,7 +16,7 @@ public class FabricaInscripcion {
         		comandoInscripcion.getUsuario(),
         		comandoInscripcion.getCurso(),
         		comandoInscripcion.getValor(),
-        		comandoInscripcion.getFechaInscripcion()
+				LocalDate.now()
         );
     }
 

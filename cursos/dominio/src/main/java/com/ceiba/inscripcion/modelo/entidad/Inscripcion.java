@@ -30,6 +30,6 @@ public class Inscripcion {
         this.usuario=usuario;
         this.curso=curso;
         this.valor=valor;
-        this.fechaInscripcion=LocalDate.now();
+        this.fechaInscripcion=fechaInscripcion;
     }
 }
