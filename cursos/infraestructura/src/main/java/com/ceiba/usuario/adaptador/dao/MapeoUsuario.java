@@ -17,11 +17,11 @@ public class MapeoUsuario implements RowMapper<DtoUsuario>, MapperResult {
         Long cedula = resultSet.getLong("cedula");
         String nombre = resultSet.getString("nombre");
         LocalDate fecha = extraerLocalDate(resultSet, "fecha_creacion");
-        LocalDate fecha_nacimiento = extraerLocalDate(resultSet, "fecha_nacimiento");
+        LocalDate fechaNacimiento = extraerLocalDate(resultSet, "fecha_nacimiento");
         float creditos = resultSet.getFloat("creditos");
         
 
-        return new DtoUsuario(id,cedula,nombre,creditos,fecha_nacimiento,fecha);
+        return new DtoUsuario(id,cedula,nombre,creditos,fechaNacimiento,fecha);
     }
 
 }
