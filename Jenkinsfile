@@ -58,12 +58,7 @@ pipeline {
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-        //Construir sin tarea test que se ejecutó previamente
-<<<<<<< HEAD
         sh 'gradle --b ./cursos/build.gradle build -x test'
-=======
-       sh 'gradle --b ./cursos/build.gradle build -x test'
->>>>>>> c4bc835c1b8d412b40c9eafc3c2fb37a8023f5c9
       }
     }  
   }
