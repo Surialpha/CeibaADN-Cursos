@@ -41,23 +41,7 @@ public class ServicioActualizarInscripcion {
     	this.repositorioInscripcion.cederCreditos(usuario);
     }
 
-    private int numeroInscritos(Long curso) {
-    	int numeroInscritos = this.repositorioInscripcion.numeroInscritos(curso);
-    	System.out.print(numeroInscritos);
-        if(numeroInscritos>=4) {
-        	return numeroInscritos-4;
-        }
-        else {
-        	return 0;
-        }
-    }
-    
-    private float aplicarDescuento(int consDes , float valor) {
-    	
-    	return (float) ((float) valor+(valor*(0.01*consDes)));
-      
-    }
-    
+
     public void validarDiaSemana(Inscripcion inscripcion) {
     	
     	DayOfWeek dow = inscripcion.getFechaInscripcion().getDayOfWeek();

@@ -1,7 +1,6 @@
 package com.ceiba.usuario.puerto.repositorio;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import com.ceiba.usuario.modelo.entidad.Usuario;
 

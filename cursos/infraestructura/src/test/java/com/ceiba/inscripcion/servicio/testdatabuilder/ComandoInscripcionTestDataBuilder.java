@@ -1,10 +1,8 @@
 package com.ceiba.inscripcion.servicio.testdatabuilder;
 
 import com.ceiba.inscripcion.comando.ComandoInscripcion;
-import com.ceiba.usuario.comando.ComandoUsuario;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class ComandoInscripcionTestDataBuilder {
 

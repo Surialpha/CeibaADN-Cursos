@@ -3,7 +3,6 @@ package com.ceiba.usuario.servicio.testdatabuilder;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class UsuarioTestDataBuilder {
 

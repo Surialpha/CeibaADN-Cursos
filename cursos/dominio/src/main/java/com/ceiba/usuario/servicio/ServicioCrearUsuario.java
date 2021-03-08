@@ -4,7 +4,6 @@ import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Period;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
