@@ -1,6 +1,8 @@
 package com.ceiba.usuario.servicio;
 
+import com.ceiba.dominio.excepcion.ExcepcionInscripcion;
 import com.ceiba.dominio.excepcion.ExcepcionMaximoIngresos;
+import com.ceiba.dominio.excepcion.ExcepcionMayoriaEdad;
 import com.ceiba.usuario.modelo.entidad.Usuario;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
@@ -9,6 +11,8 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import com.ceiba.BasePrueba;
+
+import java.time.LocalDate;
 
 public class ServicioCrearUsuarioTest {
 
@@ -33,6 +37,12 @@ public class ServicioCrearUsuarioTest {
         ServicioCrearUsuario servicioCrearUsuario = new ServicioCrearUsuario(repositorioUsuario);
         // act - assert
         BasePrueba.assertThrows(() -> servicioCrearUsuario.ejecutar(usuario), ExcepcionMaximoIngresos.class,"El sistema no permite el ingreso de mas de 20 usuarios diarios");
+    }
+
+    @Test
+    public void validarUsuarioEdadTest(){
+        // act - assert
+        BasePrueba.assertThrows(() -> new UsuarioTestDataBuilder().conFecha_nacimiento(LocalDate.now()).build(), ExcepcionMayoriaEdad.class,"El usuario debe ser mayor de edad");
     }
 
 }

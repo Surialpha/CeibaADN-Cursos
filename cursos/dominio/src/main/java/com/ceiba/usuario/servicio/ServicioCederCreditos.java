@@ -6,7 +6,8 @@ import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 
 public class ServicioCederCreditos {
 
-    private static final String EL_USUARIO_NO_TIENE_LA_CANTIDAD_DISPONIBLE_PARA_CEDER = "El usuario no puede ceder más creditos de los que tiene";
+    private static final int MAXIMO_CREDITOS_PERMITIDOS = 400;
+	private static final String EL_USUARIO_NO_TIENE_LA_CANTIDAD_DISPONIBLE_PARA_CEDER = "El usuario no puede ceder más creditos de los que tiene";
     private static final String EL_USUARIO_NO_PUEDE_RECIBIR_MAS_RECIBIR_CREDITOS = "El usuario no puede recibir esa cantidad de creditos ya que supera 400 creditos totales";
 
     private final RepositorioUsuario repositorioUsuario;
@@ -23,24 +24,24 @@ public class ServicioCederCreditos {
         this.repositorioUsuario.cederCreditos(usuario);
     }
 
-    public float restarCreditos(Usuario usuario) {
+    private float restarCreditos(Usuario usuario) {
     	float creditosActualizados = retornarCreditosUsuario(usuario)-usuario.getCreditos();
     	
     	return creditosActualizados;
     }
     
-    public void sumarCretidos(Usuario usuario) {
+    private void sumarCretidos(Usuario usuario) {
     	float creditosSumados = retornarCreditosCedido(usuario);
     	this.repositorioUsuario.sumarCreditos(usuario.getCedido(),creditosSumados);
     }
     
     
-    public float retornarCreditosUsuario(Usuario usuario) {
+    private float retornarCreditosUsuario(Usuario usuario) {
     	float creditosD = repositorioUsuario.retornarCreditos(usuario.getId());
     	return creditosD;
     }
     
-    public float retornarCreditosCedido(Usuario usuario) {
+    private float retornarCreditosCedido(Usuario usuario) {
     	float creditosD = repositorioUsuario.retornarCreditos(usuario.getCedido());
     	float suma = creditosD+usuario.getCreditos();
     	return suma;
@@ -55,7 +56,7 @@ public class ServicioCederCreditos {
     
     private void validarCreditosSumados(Usuario usuario) {
     	float sumados = retornarCreditosCedido(usuario);
-        if(sumados>400) {
+        if(sumados>MAXIMO_CREDITOS_PERMITIDOS) {
             throw new ExcepcionCreditos(EL_USUARIO_NO_PUEDE_RECIBIR_MAS_RECIBIR_CREDITOS);
         }
     }

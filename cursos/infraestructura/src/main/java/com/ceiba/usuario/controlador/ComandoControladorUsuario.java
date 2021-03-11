@@ -53,7 +53,7 @@ public class ComandoControladorUsuario {
 	}
 	
 	@PutMapping(value="/ceder/{id}")
-	@ApiOperation("Actualizar Usuario")
+	@ApiOperation("Ceder Creditos Usuario")
 	public void cederCreditos(@RequestBody ComandoUsuario comandoUsuario,@PathVariable Long id) {
 		comandoUsuario.setId(id);
 		manejadorCederCreditos.ejecutar(comandoUsuario);

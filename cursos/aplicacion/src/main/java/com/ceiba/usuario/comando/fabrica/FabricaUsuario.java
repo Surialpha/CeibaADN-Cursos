@@ -1,6 +1,9 @@
 package com.ceiba.usuario.comando.fabrica;
 
 import com.ceiba.usuario.modelo.entidad.Usuario;
+
+import java.time.LocalDate;
+
 import org.springframework.stereotype.Component;
 
 import com.ceiba.usuario.comando.ComandoUsuario;
@@ -14,7 +17,7 @@ public class FabricaUsuario {
         		comandoUsuario.getCedula(),
         		comandoUsuario.getNombre(),
         		comandoUsuario.getFechaNacimiento(), 
-        		comandoUsuario.getFecha(), 
+        		LocalDate.now(), 
         		comandoUsuario.getCreditos(),
         		comandoUsuario.getCedido()
         );

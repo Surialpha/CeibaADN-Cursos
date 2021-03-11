@@ -17,7 +17,7 @@ public class UsuarioTestDataBuilder {
     public UsuarioTestDataBuilder() {
         nombreUsuario = "Sebastian";
         cedula = (long) 1214736979;
-        fecha_nacimiento = LocalDate.now();
+        fecha_nacimiento = LocalDate.parse("2002-01-01");
         fecha_creacion = LocalDate.now();
         creditos = (float) 200.0;
     }
