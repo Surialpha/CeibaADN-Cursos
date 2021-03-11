@@ -21,4 +21,15 @@ public class ServicioCederCreditosTest {
         BasePrueba.assertThrows(() -> servicioCederCreditos.ejecutar(usuario), ExcepcionCreditos.class,"El usuario no puede ceder más creditos de los que tiene");
     }
 
+    @Test
+    public void validarSumarCreditosTest() {
+        // arrange
+        Usuario usuario = new UsuarioTestDataBuilder().conId(1L).conCreditos(2L).build();
+        RepositorioUsuario repositorioUsuario = Mockito.mock(RepositorioUsuario.class);
+        Mockito.when(repositorioUsuario.retornarCreditos(Mockito.anyLong())).thenReturn((float)400);
+        ServicioCederCreditos servicioCederCreditos = new ServicioCederCreditos(repositorioUsuario);
+        // act - assert
+        BasePrueba.assertThrows(() -> servicioCederCreditos.ejecutar(usuario), ExcepcionCreditos.class,"El usuario no puede recibir esa cantidad de creditos ya que supera 400 creditos totales");
+    }
+
 }

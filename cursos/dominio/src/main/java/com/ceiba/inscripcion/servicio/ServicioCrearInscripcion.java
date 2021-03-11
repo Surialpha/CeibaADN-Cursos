@@ -10,9 +10,10 @@ import com.ceiba.usuario.modelo.entidad.Usuario;
 public class ServicioCrearInscripcion {
 
     private static final int CERO = 0;
-	private static final int NUMERO_MAXIMO_PERMITIDO_INSCRITOS = 4;
+	private static final int NUMERO_MAXIMO_PERMITIDO_INSCRITOS = 5;
     private static final String NO_TIENES_CREDITOS_SUFICIENTES_PARA_INSCRIBIRTE = "No es posible inscribirte a este curso, no tienes los creditos suficientes";
-    
+    public static final double CONSTANTE_PORCENTAJE_POR_USUARIO = 0.01;
+
     private final RepositorioInscripcion repositorioInscripcion;
 
     public ServicioCrearInscripcion(RepositorioInscripcion repositorioInscripcion) {
@@ -53,7 +54,7 @@ public class ServicioCrearInscripcion {
     
     private float aplicarDescuento(int consDes , float valor) {
     	
-    	return (float) ((float) valor+(valor*(0.01*consDes)));
+    	return (float) (valor+(valor*(CONSTANTE_PORCENTAJE_POR_USUARIO *consDes)));
       
     }
     
