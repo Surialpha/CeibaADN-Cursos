@@ -11,4 +11,6 @@ public interface DaoUsuario {
      * @return los usuarios
      */
     List<DtoUsuario> listar();
+    
+    List<DtoUsuario> listarById(Long id);
 }

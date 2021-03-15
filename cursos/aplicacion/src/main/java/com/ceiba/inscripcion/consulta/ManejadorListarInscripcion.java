@@ -17,4 +17,9 @@ public class ManejadorListarInscripcion {
     }
 
     public List<DtoInscripcion> ejecutar(){ return this.daoInscripcion.listar(); }
+    
+    public List<DtoInscripcion> listarBy(Long id){ return this.daoInscripcion.listarBy(id); }
+    
+    
+    public List<DtoInscripcion> listarByUser(Long id){ return this.daoInscripcion.listarByUser(id); }
 }

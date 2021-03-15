@@ -4,8 +4,6 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.inscripcion.modelo.entidad.Inscripcion;
 import com.ceiba.inscripcion.puerto.repositorio.RepositorioInscripcion;
-import com.ceiba.usuario.modelo.entidad.Usuario;
-
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -64,8 +62,11 @@ public class RepositorioInscripcionMysql implements RepositorioInscripcion {
 	}
 
 	@Override
-	public void cederCreditos(Usuario usuario) {
-		 this.customNamedParameterJdbcTemplate.actualizar(usuario, actualizarCreditos);
+	public void restarCreditos(Long idUsuario,float creditos) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", idUsuario);
+        paramSource.addValue("creditos", creditos);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(actualizarCreditos,paramSource);
 	}
 
 	@Override

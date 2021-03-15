@@ -21,7 +21,8 @@ public class ServicioCederCreditos {
     	validarCreditosSumados(usuario);
     	sumarCretidos(usuario);
     	usuario.setCreditos(restarCreditos(usuario));
-        this.repositorioUsuario.cederCreditos(usuario);
+
+        this.repositorioUsuario.cederCreditos(usuario.getId(),usuario.getCreditos());
     }
 
     private float restarCreditos(Usuario usuario) {

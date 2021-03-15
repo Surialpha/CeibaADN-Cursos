@@ -1,2 +1,3 @@
-select id,usuario,curso,valor,fecha_inscripcion
-from inscripcion
+select i.*,u.nombre,u.creditos
+from inscripcion i
+join usuario u on i.usuario = u.id

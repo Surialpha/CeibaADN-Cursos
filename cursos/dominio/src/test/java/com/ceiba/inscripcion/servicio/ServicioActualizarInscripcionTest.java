@@ -2,11 +2,8 @@ package com.ceiba.inscripcion.servicio;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionInscripcion;
-import com.ceiba.inscripcion.modelo.entidad.Inscripcion;
-import com.ceiba.inscripcion.puerto.repositorio.RepositorioInscripcion;
 import com.ceiba.inscripcion.servicio.testdatabuilder.InscripcionTestDataBuilder;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.time.LocalDate;
 

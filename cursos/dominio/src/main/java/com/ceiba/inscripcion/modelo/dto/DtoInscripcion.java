@@ -14,5 +14,7 @@ public class DtoInscripcion {
 	private Long curso;
 	private float valor;
 	private LocalDate fechaInscripcion;
+	private  String nombre;
+	private float creditos;
 
 }

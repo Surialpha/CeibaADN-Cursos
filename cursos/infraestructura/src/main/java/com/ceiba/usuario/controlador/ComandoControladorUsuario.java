@@ -27,7 +27,7 @@ public class ComandoControladorUsuario {
 									 ManejadorEliminarUsuario manejadorEliminarUsuario,
 									 ManejadorActualizarUsuario manejadorActualizarUsuario,
 									 ManejadorCederCreditos manejadorCederCreditos) {
-        this.manejadorCrearUsuario = manejadorCrearUsuario;
+        this.manejadorCrearUsuario = manejadorCrearUsuario; 
 		this.manejadorEliminarUsuario = manejadorEliminarUsuario;
 		this.manejadorActualizarUsuario = manejadorActualizarUsuario;
 		this.manejadorCederCreditos = manejadorCederCreditos;

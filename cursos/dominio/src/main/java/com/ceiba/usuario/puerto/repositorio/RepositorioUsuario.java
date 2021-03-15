@@ -22,7 +22,7 @@ public interface RepositorioUsuario {
      * Permite actualizar un usuario que cede creditos
      * @param usuario
      */
-    void cederCreditos(Usuario usuario);
+    void cederCreditos(Long idUsuario,float creditos);
     
     /**
      * Permite actualizar un usuario que le cedieron creditos

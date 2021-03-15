@@ -21,7 +21,7 @@ public class MapeoUsuario implements RowMapper<DtoUsuario>, MapperResult {
         float creditos = resultSet.getFloat("creditos");
         
 
-        return new DtoUsuario(id,cedula,nombre,creditos,fechaNacimiento,fecha);
+        return new DtoUsuario(id,cedula,nombre,creditos,fecha,fechaNacimiento);
     }
 
 }

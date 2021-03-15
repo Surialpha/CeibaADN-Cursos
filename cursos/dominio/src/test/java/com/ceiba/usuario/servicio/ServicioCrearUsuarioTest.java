@@ -1,6 +1,5 @@
 package com.ceiba.usuario.servicio;
 
-import com.ceiba.dominio.excepcion.ExcepcionInscripcion;
 import com.ceiba.dominio.excepcion.ExcepcionMaximoIngresos;
 import com.ceiba.dominio.excepcion.ExcepcionMayoriaEdad;
 import com.ceiba.usuario.modelo.entidad.Usuario;

@@ -17,4 +17,8 @@ public class ManejadorListarUsuarios {
     }
 
     public List<DtoUsuario> ejecutar(){ return this.daoUsuario.listar(); }
+    
+    public List<DtoUsuario> ejecutarBy(Long id){ return this.daoUsuario.listarById(id); }
+    
+    
 }

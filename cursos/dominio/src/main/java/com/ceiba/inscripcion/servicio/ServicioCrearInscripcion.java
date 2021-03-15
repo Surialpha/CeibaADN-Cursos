@@ -4,7 +4,6 @@ package com.ceiba.inscripcion.servicio;
 import com.ceiba.dominio.excepcion.ExcepcionInscripcion;
 import com.ceiba.inscripcion.modelo.entidad.Inscripcion;
 import com.ceiba.inscripcion.puerto.repositorio.RepositorioInscripcion;
-import com.ceiba.usuario.modelo.entidad.Usuario;
 
 
 public class ServicioCrearInscripcion {
@@ -36,9 +35,7 @@ public class ServicioCrearInscripcion {
     	if(creditosActualizados<CERO) {
     	 throw new ExcepcionInscripcion(NO_TIENES_CREDITOS_SUFICIENTES_PARA_INSCRIBIRTE);
     	}
-    	//CAMBIAR USUARIO A VARIABLES
-    	Usuario usuario = new Usuario(inscripcion.getUsuario(), creditosActualizados);
-    	this.repositorioInscripcion.cederCreditos(usuario);
+    	this.repositorioInscripcion.restarCreditos(inscripcion.getUsuario(),creditosActualizados);
     }
 
     private int numeroInscritos(Long curso) {

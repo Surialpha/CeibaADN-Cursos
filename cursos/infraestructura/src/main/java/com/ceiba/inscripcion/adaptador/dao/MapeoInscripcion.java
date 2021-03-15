@@ -18,9 +18,10 @@ public class MapeoInscripcion implements RowMapper<DtoInscripcion>, MapperResult
         Long curso = resultSet.getLong("curso");
         Float valor = resultSet.getFloat("valor");
         LocalDate fechaInscripcion = extraerLocalDate(resultSet, "fecha_inscripcion");
-        
+        Float creditos = resultSet.getFloat("creditos");
+        String nombre = resultSet.getString("nombre");
 
-        return new DtoInscripcion(id,usuario,curso,valor,fechaInscripcion);
+        return new DtoInscripcion(id,usuario,curso,valor,fechaInscripcion,nombre,creditos);
     }
 
 }

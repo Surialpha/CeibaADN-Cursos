@@ -17,6 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class ServicioCrearInscripcionTest {
 
     public static final float CONSTANTE_VALOR = (float)103.0;
+    public static final float CONSTANTE_VALOR_CON_CERO = (float)100.0;
 
     @Test
     public void validarCreditosDisponiblesTest() {
@@ -47,6 +48,20 @@ public class ServicioCrearInscripcionTest {
         servicioCrearInscripcion.ejecutar(inscripcion);
         // act - assert
         assertEquals(CONSTANTE_VALOR,inscripcion.getValor(), 0.0);
+    }
+
+    @Test
+    public void validarValorSinDescuentoTest() {
+        // arrange
+
+        Inscripcion inscripcion = new InscripcionTestDataBuilder().conValor(100).build();
+        RepositorioInscripcion repositorioInscripcion = Mockito.mock(RepositorioInscripcion.class);
+        Mockito.when(repositorioInscripcion.retornarCreditos(Mockito.anyLong())).thenReturn((float)200);
+        Mockito.when(repositorioInscripcion.numeroInscritos(Mockito.anyLong())).thenReturn(1);
+        ServicioCrearInscripcion servicioCrearInscripcion = new ServicioCrearInscripcion(repositorioInscripcion);
+        servicioCrearInscripcion.ejecutar(inscripcion);
+        // act - assert
+        assertEquals(CONSTANTE_VALOR_CON_CERO,inscripcion.getValor(), 0.0);
     }
 
 }

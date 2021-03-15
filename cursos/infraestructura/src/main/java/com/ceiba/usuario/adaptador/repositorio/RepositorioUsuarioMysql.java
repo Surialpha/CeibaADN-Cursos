@@ -85,8 +85,11 @@ public class RepositorioUsuarioMysql implements RepositorioUsuario {
 	}
 
 	@Override
-	public void cederCreditos(Usuario usuario) {
-		 this.customNamedParameterJdbcTemplate.actualizar(usuario, actualizarCreditos);
+	public void cederCreditos(Long idUsuario,float creditos) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("id", idUsuario);
+        paramSource.addValue("creditos", creditos);
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(actualizarCreditos,paramSource);
 	}
 
 	@Override
