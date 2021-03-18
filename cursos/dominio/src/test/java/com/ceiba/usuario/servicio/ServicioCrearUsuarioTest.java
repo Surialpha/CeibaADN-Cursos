@@ -11,6 +11,9 @@ import org.mockito.Mockito;
 
 import com.ceiba.BasePrueba;
 
+import static org.junit.Assert.assertEquals;
+
+import java.lang.reflect.Field;
 import java.time.LocalDate;
 
 public class ServicioCrearUsuarioTest {
@@ -42,6 +45,30 @@ public class ServicioCrearUsuarioTest {
     public void validarUsuarioEdadTest(){
         // act - assert
         BasePrueba.assertThrows(() -> new UsuarioTestDataBuilder().conFecha_nacimiento(LocalDate.now()).build(), ExcepcionMayoriaEdad.class,"El usuario debe ser mayor de edad");
+    }
+    
+    
+    @Test
+    public void validarCostanteCreditosRegistroTest() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException   {
+
+    	//Valida el maximo de creditos de un usuario, sea 200
+    	Field field = ServicioCrearUsuario.class.getDeclaredField("CANTIDAD_DE_CREDITOS_AL_REGISTRARSE");
+    	field.setAccessible(true);
+    	int creditosRegistro = field.getInt(field);
+    	assertEquals(200, creditosRegistro,0.0);
+    	
+    }
+    
+
+    @Test
+    public void validarCostanteMaximoUsuariosPorDiaTest() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException   {
+
+    	//Valida la constante de maximo de usuarios que pueden ser ingresados diariamente
+    	Field field = ServicioCrearUsuario.class.getDeclaredField("MAXIMO_DE_USUARIOS_INGRESADOS_POR_DIA");
+    	field.setAccessible(true);
+    	int maximoRegistrosDiarios = field.getInt(field);
+    	assertEquals(20, maximoRegistrosDiarios,0.0);
+    	
     }
 
 }

@@ -40,7 +40,6 @@ public class ServicioCrearInscripcion {
 
     private int numeroInscritos(Long curso) {
     	int numeroInscritos = this.repositorioInscripcion.numeroInscritos(curso);
-    	System.out.print(numeroInscritos);
         if(numeroInscritos>=NUMERO_MAXIMO_PERMITIDO_INSCRITOS) {
         	return numeroInscritos-NUMERO_MAXIMO_PERMITIDO_INSCRITOS;
         }
