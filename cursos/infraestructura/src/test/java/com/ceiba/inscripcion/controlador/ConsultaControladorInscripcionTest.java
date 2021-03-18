@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -42,6 +43,23 @@ public class ConsultaControladorInscripcionTest {
                 .andExpect(jsonPath("$[0].valor", is(100.0)))
                 .andExpect(jsonPath("$[0].fechaInscripcion", is(LocalDate.now().toString())));
     }
+    
+    @Test
+    public void listarBy() throws Exception {
+        // arrange
+    	Long id = 1L;
+        // act - assert
+        mocMvc.perform(get("/inscripcion/{id}",id)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].id", is(1)))
+                .andExpect(jsonPath("$[0].usuario", is(1)))
+                .andExpect(jsonPath("$[0].curso", is(1)))
+                .andExpect(jsonPath("$[0].valor", is(100.0)))
+                .andExpect(jsonPath("$[0].fechaInscripcion", is(LocalDate.now().toString())));
+    }
+
 
 
 }
