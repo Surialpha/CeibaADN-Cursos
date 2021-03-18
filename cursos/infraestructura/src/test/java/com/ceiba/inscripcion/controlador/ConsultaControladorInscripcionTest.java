@@ -58,6 +58,20 @@ public class ConsultaControladorInscripcionTest {
                 .andExpect(jsonPath("$[0].valor", is(100.0)))
                 .andExpect(jsonPath("$[0].fechaInscripcion", is(LocalDate.now().toString())));
     }
+    
+    @Test
+    public void listarByUser() throws Exception {
+        // arrange
+    	Long id = 1L;
+        // act - assert
+        mocMvc.perform(get("/inscripcion/usuario/{id}",id) 
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)));
+    }
+    
+    
+
 
 
 

@@ -49,18 +49,5 @@ public class ConsultaControladorUsuarioTest {
     }
     
 
-    @Test
-    public void listarByUser() throws Exception {
-        // arrange
-    	Long id = 1L;
-        // act - assert
-        mocMvc.perform(get("/usuarios/{id}",id) 
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)));
-    }
-    
-    
-
 
 }
