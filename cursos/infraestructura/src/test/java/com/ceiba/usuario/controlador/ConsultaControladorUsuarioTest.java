@@ -35,6 +35,18 @@ public class ConsultaControladorUsuarioTest {
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].nombre", is("test")));
     }
+    
+    @Test
+    public void listarById() throws Exception {
+        // arrange
+    	Long id = 1L;
+        // act - assert
+        mocMvc.perform(get("/usuarios/{id}",id) 
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].nombre", is("test")));
+    }
 
 
 }
